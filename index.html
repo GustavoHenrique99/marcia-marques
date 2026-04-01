@@ -76,8 +76,8 @@
                     <span class="font-serif text-2xl font-semibold text-rosavibrante">Dra. Márcia Marques</span>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-10 lg:space-x-14">
-                    <div class="flex space-x-8 lg:space-x-12">
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-10">
+                    <div class="flex space-x-6 lg:space-x-8">
                         <a href="#inicio" class="text-chumbo hover:text-rosavibrante transition-colors text-base font-medium tracking-wide">Início</a>
                         <a href="#destaques" class="text-chumbo hover:text-rosavibrante transition-colors text-base font-medium tracking-wide">Método</a>
                         <a href="#sobre" class="text-chumbo hover:text-rosavibrante transition-colors text-base font-medium tracking-wide">Sobre</a>
@@ -109,7 +109,7 @@
 
     <section id="inicio" class="hero-bg min-h-screen flex items-center pt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-2xl fade-in-section mx-auto text-center">
+            <div class="max-w-5xl fade-in-section mx-auto text-center">
                 <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-chumbo leading-tight mb-6">
                     Rejuvenescimento e Autoestima com <span class="text-rosavibrante">Dra. Márcia Marques</span>
                 </h1>
@@ -292,12 +292,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
                 
-                <div class="fade-in-section">
+                <div class="fade-in-section text-center md:text-left">
                     <span class="font-serif text-3xl font-semibold text-white mb-6 block">Dra. Márcia Marques</span>
                     <p class="text-pink-100 font-light text-sm leading-relaxed mb-6">
                         Realçando a sua beleza natural com ciência, segurança e um toque de arte.
                     </p>
-                    <div class="flex space-x-4">
+                    <div class="flex justify-center md:justify-start space-x-4">
                         <a href="https://instagram.com/marcia_Marques_esteta" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-rosavibrante transition-all">
                             <i class="fa-brands fa-instagram text-xl"></i>
                         </a>
@@ -307,25 +307,25 @@
                     </div>
                 </div>
 
-                <div class="fade-in-section" style="transition-delay: 100ms;">
+                <div class="fade-in-section text-center md:text-left" style="transition-delay: 100ms;">
                     <h4 class="font-serif text-xl text-white mb-6">Fale Conosco</h4>
                     <ul class="space-y-4 text-pink-100 font-light text-sm">
-                        <li class="flex items-start">
+                        <li class="flex items-start justify-center md:justify-start">
                             <i class="fa-solid fa-location-dot mt-1 mr-3 w-5"></i>
                             <span>Av. Exemplo Placeholder, 123 - Sala 45<br>Bairro Nobre, Ipatinga - MG</span>
                         </li>
-                        <li class="flex items-center">
+                        <li class="flex items-center justify-center md:justify-start">
                             <i class="fa-solid fa-phone mr-3 w-5"></i>
                             <span>(31) 99999-9999</span>
                         </li>
-                        <li class="flex items-center">
+                        <li class="flex items-center justify-center md:justify-start">
                             <i class="fa-regular fa-envelope mr-3 w-5"></i>
                             <span>contato@dramarciaesteta.com.br</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="fade-in-section" style="transition-delay: 200ms;">
+                <div class="fade-in-section text-center md:text-left" style="transition-delay: 200ms;">
                     <h4 class="font-serif text-2xl text-white mb-4">Pronta para redefinir seus contornos?</h4>
                     <p class="text-pink-100 font-light text-sm mb-6">Agende sua avaliação e descubra o melhor protocolo para você.</p>
                     <a href="https://wa.me/5531999999999" target="_blank" class="inline-flex items-center justify-center bg-offwhite text-rosavibrante px-6 py-3 rounded-full text-base font-medium hover:bg-white transition-all shadow-lg hover:-translate-y-1">
@@ -352,6 +352,13 @@
             history.scrollRestoration = 'manual';
         }
         window.scrollTo(0, 0);
+        
+        // Timeout no onload para sobrepor comportamento nativo de navegadores mobile
+        window.onload = function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 10);
+        };
 
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
