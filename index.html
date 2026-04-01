@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Márcia Marques | Estética Avançada</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        offwhite: '#FAFAFA',
+                        chumbo: '#333333',
+                        rosavibrante: '#D81B60',
+                        rosapastel: '#FFF0F5'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FAFAFA;
+            color: #333333;
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Fade-in Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            visibility: hidden;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
+
+        /* Hero Image Overlay */
+        .hero-bg {
+            /* Placeholder para a imagem da bio - Substitua o URL abaixo */
+            background-image: linear-gradient(to right, rgba(250, 250, 250, 0.9) 0%, rgba(250, 250, 250, 0.6) 100%), url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-2xl font-semibold text-rosavibrante">Dra. Márcia Marques</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-chumbo hover:text-rosavibrante transition-colors text-sm font-medium">Início</a>
+                    <a href="#destaques" class="text-chumbo hover:text-rosavibrante transition-colors text-sm font-medium">Método</a>
+                    <a href="#sobre" class="text-chumbo hover:text-rosavibrante transition-colors text-sm font-medium">Sobre</a>
+                    <a href="#resultados" class="text-chumbo hover:text-rosavibrante transition-colors text-sm font-medium">Resultados</a>
+                    <a href="#servicos" class="text-chumbo hover:text-rosavibrante transition-colors text-sm font-medium">Serviços</a>
+                </div>
+
+                <div class="hidden md:flex items-center">
+                    <a href="#contato" class="bg-rosavibrante text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all shadow-md">Agendar Avaliação</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-chumbo hover:text-rosavibrante focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-gray-200 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#inicio" class="mobile-link block px-3 py-3 text-chumbo hover:text-rosavibrante hover:bg-rosapastel rounded-md text-base font-medium"><i class="fa-solid fa-house w-6 text-center mr-2 text-rosavibrante"></i> Início</a>
+                <a href="#destaques" class="mobile-link block px-3 py-3 text-chumbo hover:text-rosavibrante hover:bg-rosapastel rounded-md text-base font-medium"><i class="fa-solid fa-leaf w-6 text-center mr-2 text-rosavibrante"></i> Nosso Método</a>
+                <a href="#sobre" class="mobile-link block px-3 py-3 text-chumbo hover:text-rosavibrante hover:bg-rosapastel rounded-md text-base font-medium"><i class="fa-solid fa-user-doctor w-6 text-center mr-2 text-rosavibrante"></i> Sobre a Dra.</a>
+                <a href="#resultados" class="mobile-link block px-3 py-3 text-chumbo hover:text-rosavibrante hover:bg-rosapastel rounded-md text-base font-medium"><i class="fa-solid fa-image w-6 text-center mr-2 text-rosavibrante"></i> Resultados</a>
+                <a href="#servicos" class="mobile-link block px-3 py-3 text-chumbo hover:text-rosavibrante hover:bg-rosapastel rounded-md text-base font-medium"><i class="fa-solid fa-spa w-6 text-center mr-2 text-rosavibrante"></i> Serviços</a>
+                <a href="#contato" class="mobile-link mt-4 text-center block bg-rosavibrante text-white px-4 py-3 rounded-full text-base font-medium shadow-md"><i class="fa-brands fa-whatsapp mr-2"></i> Agendar Avaliação</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-2xl fade-in-section">
+                <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-chumbo leading-tight mb-6">
+                    Rejuvenescimento e Autoestima com <span class="text-rosavibrante">Dra. Márcia Marques</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 font-light leading-relaxed">
+                    Especialista em Harmonização Facial, Preenchedores e Tratamentos Avançados de Pele em Ipatinga.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contato" class="bg-rosavibrante text-white text-center px-8 py-4 rounded-full text-lg font-medium hover:bg-opacity-90 transition-all shadow-lg hover:-translate-y-1">
+                        Agendar Sua Avaliação
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destaques" class="py-20 bg-rosapastel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="font-serif text-3xl md:text-4xl text-chumbo mb-4">Por que o nosso método?</h2>
+                <div class="w-24 h-1 bg-rosavibrante mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center fade-in-section">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-6 border border-pink-100">
+                        <i class="fa-regular fa-face-smile text-3xl text-rosavibrante"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-chumbo font-semibold mb-3">Resultados Naturais</h3>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed">
+                        Foco em harmonização equilibrada, realçando a sua beleza autêntica sem exageros, preservando a sua essência.
+                    </p>
+                </div>
+                
+                <div class="text-center fade-in-section" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-6 border border-pink-100">
+                        <i class="fa-solid fa-syringe text-3xl text-rosavibrante"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-chumbo font-semibold mb-3">Procedimentos Seguros</h3>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed">
+                        Uso de Fios de PDO e Preenchedores com técnica avançada, produtos premium e rigorosos padrões de biossegurança.
+                    </p>
+                </div>
+
+                <div class="text-center fade-in-section" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-6 border border-pink-100">
+                        <i class="fa-regular fa-star text-3xl text-rosavibrante"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-chumbo font-semibold mb-3">Cuidado Individualizado</h3>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed">
+                        Atendimento humanizado e focado em cada paciente. Planejamento exclusivo baseado nas suas necessidades únicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 bg-offwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 fade-in-section">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-full h-full border-2 border-rosavibrante rounded-2xl"></div>
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop" alt="Dra. Márcia Marques" class="relative z-10 w-full rounded-2xl shadow-xl object-cover h-[500px]">
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/2 fade-in-section">
+                    <h2 class="font-serif text-3xl md:text-4xl text-chumbo mb-6">Conheça a Dra. Márcia Marques</h2>
+                    <h3 class="text-rosavibrante font-medium uppercase tracking-wider text-sm mb-6">Biomedicina Estética & Bem-Estar</h3>
+                    
+                    <div class="space-y-4 text-gray-600 font-light leading-relaxed">
+                        <p>
+                            Especialista em Biomedicina Estética com foco em saúde, bem-estar e no resgate da sua melhor versão. Acredito que a estética avançada vai muito além da aparência; é sobre devolver a autoestima com segurança e carinho.
+                        </p>
+                        <p>
+                            Com vasta experiência e compromisso com resultados de excelência, cada protocolo é desenhado de forma exclusiva. Minha prioridade é garantir procedimentos seguros, utilizando as técnicas mais modernas do mercado para entregar um aspecto descansado e natural.
+                        </p>
+                        <p>
+                            Seja bem-vinda ao seu novo momento de autocuidado.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Signature_placeholder.svg/1200px-Signature_placeholder.svg.png" alt="Assinatura" class="h-12 opacity-50 filter grayscale">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resultados" class="py-20 bg-rosapastel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="font-serif text-3xl md:text-4xl text-chumbo mb-4">Resultados que Transformam</h2>
+                <div class="w-24 h-1 bg-rosavibrante mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 font-light max-w-2xl mx-auto">Um portfólio de naturalidade e precisão técnica.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group relative overflow-hidden rounded-2xl shadow-md fade-in-section">
+                    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=2070&auto=format&fit=crop" alt="Harmonização Facial" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6">
+                            <h4 class="text-white font-serif text-xl">Harmonização Facial</h4>
+                            <p class="text-gray-200 text-sm font-light">Equilíbrio e simetria natural</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-2xl shadow-md fade-in-section" style="transition-delay: 100ms;">
+                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=2070&auto=format&fit=crop" alt="Rejuvenescimento Labial" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6">
+                            <h4 class="text-white font-serif text-xl">Rejuvenescimento Labial</h4>
+                            <p class="text-gray-200 text-sm font-light">Contorno e hidratação profunda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden rounded-2xl shadow-md fade-in-section" style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=2095&auto=format&fit=crop" alt="Correção de Lóbulo" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-6">
+                            <h4 class="text-white font-serif text-xl">Correção de Lóbulo</h4>
+                            <p class="text-gray-200 text-sm font-light">Lobuloplastia não cirúrgica</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-24 bg-offwhite">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="font-serif text-3xl md:text-4xl text-chumbo mb-4">Nossos Serviços</h2>
+                <div class="w-24 h-1 bg-rosavibrante mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 fade-in-section">
+                    <div class="w-14 h-14 bg-rosapastel rounded-xl flex items-center justify-center mb-6 text-rosavibrante">
+                        <i class="fa-solid fa-wand-magic-sparkles text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-chumbo font-semibold mb-3">Harmonização Facial Completa</h3>
+                    <p class="text-gray-600 font-light text-sm mb-6 leading-relaxed">
+                        Um estudo completo da sua face para realçar pontos fortes e suavizar marcas do tempo, promovendo um resultado integrado e elegante.
+                    </p>
+                    <a href="#contato" class="text-rosavibrante font-medium text-sm hover:underline flex items-center">
+                        Saber mais <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 fade-in-section" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-rosapastel rounded-xl flex items-center justify-center mb-6 text-rosavibrante">
+                        <i class="fa-solid fa-droplet text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-chumbo font-semibold mb-3">Toxina Botulínica & Preenchedores</h3>
+                    <p class="text-gray-600 font-light text-sm mb-6 leading-relaxed">
+                        Prevenção e tratamento de rugas dinâmicas, além de preenchimento estratégico para lábios, olheiras e correção de cicatrizes.
+                    </p>
+                    <a href="#contato" class="text-rosavibrante font-medium text-sm hover:underline flex items-center">
+                        Saber mais <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 fade-in-section" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-rosapastel rounded-xl flex items-center justify-center mb-6 text-rosavibrante">
+                        <i class="fa-solid fa-dna text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-chumbo font-semibold mb-3">Fios de PDO & Lobuloplastia</h3>
+                    <p class="text-gray-600 font-light text-sm mb-6 leading-relaxed">
+                        Bioestimulação de colágeno avançada com fios de sustentação e técnicas de reconstrução de lóbulo (orelha rasgada) com precisão.
+                    </p>
+                    <a href="#contato" class="text-rosavibrante font-medium text-sm hover:underline flex items-center">
+                        Saber mais <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="bg-rosavibrante pt-16 pb-8 border-t border-pink-700/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+                
+                <div class="fade-in-section">
+                    <span class="font-serif text-3xl font-semibold text-white mb-6 block">Dra. Márcia Marques</span>
+                    <p class="text-pink-100 font-light text-sm leading-relaxed mb-6">
+                        Realçando a sua beleza natural com ciência, segurança e um toque de arte.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/marcia_Marques_esteta" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-rosavibrante transition-all">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-rosavibrante transition-all">
+                            <i class="fa-brands fa-facebook-f text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="fade-in-section" style="transition-delay: 100ms;">
+                    <h4 class="font-serif text-xl text-white mb-6">Fale Conosco</h4>
+                    <ul class="space-y-4 text-pink-100 font-light text-sm">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot mt-1 mr-3 w-5"></i>
+                            <span>Av. Exemplo Placeholder, 123 - Sala 45<br>Bairro Nobre, Ipatinga - MG</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone mr-3 w-5"></i>
+                            <span>(31) 99999-9999</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-regular fa-envelope mr-3 w-5"></i>
+                            <span>contato@dramarciaesteta.com.br</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="fade-in-section" style="transition-delay: 200ms;">
+                    <h4 class="font-serif text-2xl text-white mb-4">Pronta para redefinir seus contornos?</h4>
+                    <p class="text-pink-100 font-light text-sm mb-6">Agende sua avaliação e descubra o melhor protocolo para você.</p>
+                    <a href="https://wa.me/5531999999999" target="_blank" class="inline-flex items-center justify-center bg-offwhite text-rosavibrante px-6 py-3 rounded-full text-base font-medium hover:bg-white transition-all shadow-lg hover:-translate-y-1">
+                        <i class="fa-brands fa-whatsapp text-xl mr-2"></i> Fale conosco no WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 pt-8 mt-8 text-center fade-in-section">
+                <p class="text-pink-100/70 text-xs font-light">
+                    &copy; 2026 Dra. Márcia Marques. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5531999999999" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] hover:scale-110 transition-transform duration-300">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        // Toggle Menu Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Fechar menu ao clicar em um link mobile
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Animação de Fade-in ao scrollar (Intersection Observer)
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Para animar apenas 1 vez
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.fade-in-section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
